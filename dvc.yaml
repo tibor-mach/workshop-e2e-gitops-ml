@@ -1,6 +1,6 @@
 stages:
   data_split:
-    cmd: python src/data_split.py
+    cmd: python3 src/data_split.py
     deps:
     - data/pool_data
     - src/data_split.py
@@ -11,7 +11,7 @@ stages:
     - data/test_data
     - data/train_data
   train:
-    cmd: python src/train.py
+    cmd: python3 src/train.py
     deps:
     - data/train_data
     - src/train.py
@@ -23,7 +23,7 @@ stages:
     - models/model.pth
     - results/train
   evaluate:
-    cmd: python src/evaluate.py
+    cmd: python3 src/evaluate.py
     deps:
     - data/test_data
     - models/model.pkl
@@ -40,3 +40,23 @@ stages:
     - models/model.pth
     outs:
     - model.tar.gz
+params:
+- results/train/params.yaml
+metrics:
+- results/train/metrics.json
+- results/evaluate/metrics.json
+plots:
+- results/train/plots/metrics:
+    x: step
+- results/evaluate/plots/images
+artifacts:
+  pool-segmentation:
+    path: models/model.pkl
+    type: model
+    desc: This is a Computer Vision (CV) model that's segmenting out swimming pools
+      from satellite images.
+    labels:
+    - cv
+    - segmentation
+    - satellite-images
+    - shufflenet_v2_x2_0
