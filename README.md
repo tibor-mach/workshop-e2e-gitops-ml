@@ -16,7 +16,7 @@ Python 3.8+ is required to run code from this repo.
 1. Clone the repository locally
 
     ```console
-    $ git clone https://github.com/iterative/workshop-e2e-gitops-ml
+    $ git clone https://github.com/tibor-mach/workshop-e2e-gitops-ml
     $ cd workshop-e2e-gitops-ml
     ```
 
